@@ -1,7 +1,6 @@
 
+import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../prisma/generated/client";
-import { PrismaPostgresAdapter } from '@prisma/adapter-ppg'
-
 
 declare global {
   // eslint-disable-next-line no-var
@@ -10,7 +9,7 @@ declare global {
 
 const connectionString = process.env.DATABASE_URL!;
 
-const adapter = new PrismaPostgresAdapter({ connectionString });
+const adapter = new PrismaPg({ connectionString });
 
 export const db =
   globalThis.prisma ??

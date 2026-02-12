@@ -16,19 +16,13 @@ export const onBoardUser = async () => {
     const newUser = await db.user.upsert({
       where: { clerkId: id },
       update: {
-        name:
-          firstName && lastName
-            ? `${firstName} ${lastName}`
-            : firstName || lastName || null,
+        name: `${user.firstName ?? ""} ${user.lastName ?? ""}`,
         email: emailAddresses[0]?.emailAddress || "",
         image: imageUrl || "",
       },
       create: {
         clerkId: id,
-        name:
-          firstName && lastName
-            ? `${firstName} ${lastName}`
-            : firstName || lastName || null,
+        name: `${user.firstName ?? ""} ${user.lastName ?? ""}`,
         email: emailAddresses[0]?.emailAddress || "",
         image: imageUrl || "",
       },
