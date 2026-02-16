@@ -11,6 +11,7 @@ import z from "zod";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Form, FormField } from "@/components/ui/form";
+import { onInvoke } from "../actions";
 // import { useCreateProject } from "@/modules/projects/hooks/project";
 
 const formSchema = z.object({
@@ -90,8 +91,8 @@ const ProjectForm = () => {
 
   const onSubmit = async (values: { content: any; }) => {
     try {
-    //   const res = await mutateAsync(values.content);
-      console.log(values.content);
+    //   const res = await mutateAsync(values.content); npm install inngest
+      console.log("Prompt:",values.content);
       
     //   router.push(`/projects/${res.id}`);
       toast.success("Project created successfully");
@@ -103,8 +104,20 @@ const ProjectForm = () => {
 
 //   const isButtonDisabled = isPending || !form.watch("content").trim();
 
+  const onInvokeAI = async () => {
+    try {
+      const res = await onInvoke();
+      console.log("AI Response:", res);
+      toast.success("Agent invoked successfully");
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
   return (
     <div className="space-y-8">
+      <Button onClick={onInvokeAI}>Invoke Agent</Button>
       {/* Templates Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
         {PROJECT_TEMPLATES.map((template, index) => (
