@@ -7,3 +7,5 @@ export const onInvoke = async () => {
         name: "agent/hello",
     })
 } 
+
+// npx --ignore-scripts=false inngest-cli@latest dev
