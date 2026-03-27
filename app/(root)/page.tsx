@@ -8,7 +8,7 @@ export default async function Home() {
   return (
     <div className='flex items-center justify-center w-full px-4 py-8'>
       <div className='max-w-5xl w-full'>
-        <section className='space-y-8 flex flex-col items-center'>
+        <section className='space-y-3.5 flex flex-col items-center'>
           <div className='flex flex-col items-center'>
             <Image
               src={"/vercel.svg"}
